@@ -1,0 +1,24 @@
+-XPUT 'localhost:9200/recipe' -d
+
+
+
+{
+   "mappings": {
+       "recipe": {
+           "_source": {
+               "enabled": true
+           },
+           "properties": {
+               "title": {
+                   "type": "text",
+                   "store": true
+               },
+               "ing": {
+                   "type": "text",
+                   "store": true
+               }
+  
+           }
+       }
+}
+}
