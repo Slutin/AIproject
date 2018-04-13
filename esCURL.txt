@@ -1,6 +1,4 @@
--XPUT 'localhost:9200/recipe' -d
-
-
+curl -H'Content-Type: application/json' -XPUT 'localhost:9200/recipe' -d
 
 {
    "mappings": {
