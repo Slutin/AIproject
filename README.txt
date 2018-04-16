@@ -2,7 +2,7 @@ install elasticsearch
 
 create new index and mapping
 run:
-curl -H'Content-Type: application/json' -XPUT 'localhost:9200/recipes' -d
+curl -H'Content-Type: application/json' -XPUT 'localhost:9200/recipes' -d'
 
 {
    "mappings": {
@@ -23,7 +23,7 @@ curl -H'Content-Type: application/json' -XPUT 'localhost:9200/recipes' -d
            }
        }
 }
-}
+}'
 
 now upload json to elasticsearch
 run:
