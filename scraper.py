@@ -28,9 +28,9 @@ def find_rec_url(page_str, page_num):
 
 
 def scan_url_list(pages):
-    f=open("rec_scrap.csv", "w+")
+    f=open("recnum_scrap.csv", "w+")
     recipe_links = []
-    f.write("title, ing\n")
+    f.write("title, ing, ing_num\n")
     for i in range(pages):
         temp = find_rec_url(1, i)
         recipe_links.extend(temp)
@@ -40,6 +40,7 @@ def scan_url_list(pages):
             request.Request("http:" + r, headers=HEADERS)).read(), "html.parser")
         title = soup.find("title").text
         ing_list = soup.select("li.o-Ingredients__a-ListItem input")
+        ing_num = len(ing_list)
         if len(ing_list) != 0:
             full_ing = ""
 
@@ -49,7 +50,7 @@ def scan_url_list(pages):
                 mod_ing = mod_ing.strip("\n")
                 full_ing += mod_ing
                 full_ing += " "
-            f.write("%s, %s\n" % (title, full_ing))
+            f.write("%s, %s, %s\n" % (title, full_ing, ing_num))
 
             print("%s Complete" % title)
 

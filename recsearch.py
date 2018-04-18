@@ -1,12 +1,22 @@
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch()
+es = Elasticsearch(["https://56641ecc747adc2063fe8577b8a09d3b.us-east-1.aws.found.io"],
+    verify_certs=False,
+    http_auth = ('elastic', 'password'),
+    scheme = "https",
+    port = 9243
+    )
 
-res = es.search(index="recipes", body={"query": {
-        "constant_score" : {
-            "filter" : {
+ingredients = raw_input("Enter ingredients: ")
+
+res = es.search(index="recipes", size = 100, body={"query": {
+        "bool" : {
+            "must" : {
                 "terms" : {
                     "ing" : ["rice", "beans", "tomato", "onion", "beef"]
+                },
+                "terms" : {
+                    "ing_num": [7]
                 }
             }
         }
@@ -14,4 +24,4 @@ res = es.search(index="recipes", body={"query": {
 
 print("Got %d Hits:" % res['hits']['total'])
 for doc in res['hits']['hits']:
-    print ("title: %s\Ing: %s" % (doc['_source']['title'], doc['_source']['ing']))
+    print ("title: %s\nIng: %s\nnum: %s" % (doc['_source']['title'], doc['_source']['ing'], doc['_source']['ing_num']))
