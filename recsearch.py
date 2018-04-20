@@ -2,12 +2,12 @@ from elasticsearch import Elasticsearch
 
 es = Elasticsearch(["https://56641ecc747adc2063fe8577b8a09d3b.us-east-1.aws.found.io"],
     verify_certs=False,
-    http_auth = ('elastic', 'password'),
+    http_auth = ('elastic', 'Z0nqsrlDbJKN5VhQTw8XKGq1'),
     scheme = "https",
     port = 9243
     )
 
-ingredients = raw_input("Enter ingredients: ")
+#ingredients = raw_input("Enter ingredients: ")
 
 res = es.search(index="recipes", size = 100, body={"query": {
         "bool" : {
