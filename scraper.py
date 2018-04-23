@@ -30,7 +30,7 @@ def find_rec_url(page_str, page_num):
 def scan_url_list(pages):
     f=open("recnum_scrap.csv", "w+")
     recipe_links = []
-    f.write("title, ing, ing_num\n")
+    f.write("title, ing, dir, ing_num\n")
     for i in range(pages):
         temp = find_rec_url(1, i)
         recipe_links.extend(temp)
@@ -40,18 +40,31 @@ def scan_url_list(pages):
             request.Request("http:" + r, headers=HEADERS)).read(), "html.parser")
         title = soup.find("title").text
         ing_list = soup.select("li.o-Ingredients__a-ListItem input")
+        dir_list = soup.find('div', attrs={"class": "o-Method__m-Body"})
         ing_num = len(ing_list)
         if len(ing_list) != 0:
             full_ing = ""
-
+            full_dir = ""
             for ing in ing_list:
                 mod_ing = ing.text.replace(",", "")
                 mod_ing = mod_ing.replace("\u00a0", "")
                 mod_ing = mod_ing.strip("\n")
                 full_ing += mod_ing
                 full_ing += " "
-            f.write("%s, %s, %s\n" % (title, full_ing, ing_num))
+            # for direct in dir_list.find_all('p'):
+            #     mod_dir = direct.text.replace(",","")
+            #     print(mod_dir)
+            #     mod_dir = mod_dir.replace("\u00a0", "")
+            #     mod_ing = mod_dir.strip("\n")
+            #     full_dir += mod_dir
+            #     full_dir += " "
+            full_dir = dir_list.get_text()
+            full_dir = full_dir.replace(",", "")
+            full_dir = full_dir.replace("\u00a0", "")
+            full_dir = full_dir.strip("\n")
+            print(full_dir)
+            f.write("%s, %s, %s, %s\n" % (title, full_ing, full_dir, ing_num))
 
             print("%s Complete" % title)
 
-scan_url_list(800)
+scan_url_list(400)

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_GOOGLE_API_TEST", "AI_GOOGLE_API_TEST\AI_GOOGLE_API_TEST.csproj", "{FE75A49A-92A6-4F97-AFFD-DCEB5BB584D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE75A49A-92A6-4F97-AFFD-DCEB5BB584D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE75A49A-92A6-4F97-AFFD-DCEB5BB584D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE75A49A-92A6-4F97-AFFD-DCEB5BB584D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE75A49A-92A6-4F97-AFFD-DCEB5BB584D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E6880F7-84E3-4DE9-B6DE-768F9CB6D9EC}
+	EndGlobalSection
+EndGlobal
